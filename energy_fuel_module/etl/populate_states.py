@@ -123,6 +123,6 @@ def insert_states():
         print(f"Error inserting states: {e}")
 
 # Run the function
-if __name__ == "__main__":
+def populate_state_table():
     create_table()
     insert_states()

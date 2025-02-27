@@ -3,6 +3,7 @@ from sqlalchemy import create_engine, Column, String, Float, Date, Integer, Prim
 from sqlalchemy.orm import sessionmaker, declarative_base
 from fetch_fuel_data import fetch_fuel_prices  # Importing function from fuel script
 from fetch_electricity_rates import fetch_electricity_rates  # Importing function from electricity script
+from populate_states import populate_state_table
 
 # Load environment variables
 DB_CONN = os.getenv("DATABASE_URL")
@@ -29,6 +30,8 @@ class ElectricityRate(Base):
 
 # Create Tables if They Do Not Exist
 def create_tables():
+    populate_state_table()
+
     Base.metadata.create_all(engine)
     print("Database tables created successfully.")
 
